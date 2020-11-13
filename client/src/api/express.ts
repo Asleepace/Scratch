@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react'
+
 const host = "http://localhost:9000"
 
 export interface ApiResponse {
@@ -11,7 +13,24 @@ export interface ApiResponse {
 /* Public methods  - - - - - - - - - - - - - - - - - - - - - - */
 
 
-export const request = async (path: string = '') => {
+export const expressHook = (path: string) => {
+  console.log('[express] hook called: ', path)
+  const [response, setResponse] = useState<ApiResponse>()
+
+  useEffect(() => {
+    const handleResponse = (response: ApiResponse) => {
+      setResponse(response)
+    }
+    requestExpress(path)
+      .then(handleResponse)
+      .catch(error => console.log('[express] hook error:', error))
+  })
+
+  return [response]
+}
+
+
+export const requestExpress = async (path: string = '') => {
   return fetch(format(path)).then(parse)
 }
 
@@ -26,6 +45,5 @@ const format = (path: string = ''): string => {
 const parse = async (response: Response): Promise<ApiResponse> => {
   console.log('[express] parsing response:', { response })
   const text = await response?.text()
-  const json = await response?.json()
-  return { response, text, json, code: response.status }
+  return { response, text, code: response.status }
 }

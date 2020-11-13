@@ -106,12 +106,13 @@ input {
   flex: 1;
 }
 
-.title {
-  font-weight: bold;
-  font-size: large;
+.v-line {
+  width: 2px;
+  background-color: var(--color-background);
+  height: 50%;
   margin-left: 16px;
+  margin-right: 16px;
 }
-
 
 /* CSS SHADOWS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
 
@@ -133,7 +134,32 @@ input {
 }
 
 
+/* HEADER STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+
+.header-title {
+  font-weight: bold;
+  font-size: large;
+  margin-left: 16px;
+  line-height: 16px;
+}
+
+.header-spacer {
+  margin-left: 8px;
+  margin-right: 8px;
+  color: var(--color-foreground)
+}
+
+.header-message {
+  color: var(--color-blue);
+  line-height: 16px;
+  font-size: 12;
+}
+
+
 /* LOGIN STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+
 
 .spacer {
   height: 8px;
