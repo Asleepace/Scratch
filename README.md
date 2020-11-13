@@ -9,7 +9,7 @@ Connect to the server by running:
 ```
 ssh root@143.110.153.76
 ```
-
+If this is the first time logging in the update the system
 ```
 sudo apt update
 sudo apt upgrade
