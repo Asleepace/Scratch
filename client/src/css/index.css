@@ -6,6 +6,7 @@
   --color-background: #282c34;
   --color-foreground: rgba(0, 0, 0, 0.3);
   --color-blue: dodgerblue;
+  --color-red: rgb(207, 33, 33);
   --font-code: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   --rounding: 8px;
 }
@@ -22,7 +23,7 @@ html, body, input, textarea {
   margin: 0; padding: 0;
 }
 
-textarea {
+textarea, #display-content {
   outline: none;
   background-color: transparent;
   font-family: var(--font-code);
@@ -92,7 +93,7 @@ input {
 .content {
   padding-right: 64px;
   padding-left: 64px;
-  padding-top: 32px;
+  padding-top: 64px;
   padding-bottom: 16px;
   flex-grow: 1;
 }
@@ -112,6 +113,10 @@ input {
   height: 50%;
   margin-left: 24px;
   margin-right: 16px;
+}
+
+.red-text { 
+  color: var(--color-red)
 }
 
 /* CSS SHADOWS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */

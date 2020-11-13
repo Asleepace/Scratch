@@ -13,15 +13,16 @@ export interface ApiResponse {
 /* Public methods  - - - - - - - - - - - - - - - - - - - - - - */
 
 
-export const expressHook = (path: string) => {
+export const hook = (path: string) => {
   console.log('[express] hook called: ', path)
   const [response, setResponse] = useState<ApiResponse>()
 
   useEffect(() => {
+    console.log('[express] effect called')
     const handleResponse = (response: ApiResponse) => {
       setResponse(response)
     }
-    requestExpress(path)
+    request(path)
       .then(handleResponse)
       .catch(error => console.log('[express] hook error:', error))
   })
@@ -30,7 +31,7 @@ export const expressHook = (path: string) => {
 }
 
 
-export const requestExpress = async (path: string = '') => {
+export const request = async (path: string = '') => {
   return fetch(format(path)).then(parse)
 }
 
