@@ -9,15 +9,17 @@ export type OnChangEvent = React.FormEvent<HTMLDivElement>
 
 export const Content: React.FC<{}> = () => {
   const [data, setData] = useStickyState("", "data");
-  const markup = markdown.toHTML(data)
-  const onChnage = (event: OnChangEvent) => {
-    console.log('[content] on change:', event.currentTarget)
+  const onChange = (event: OnChangEvent) => {
     setData(event.currentTarget.innerText)
   }
   return (
-    <div id={'display-content'} contentEditable={true} onChange={onChnage}
-      suppressContentEditableWarning={true} onBlur={onChnage}>
-      {markup}
-    </div>
+    <div
+      dangerouslySetInnerHTML={{ __html: markdown.toHTML(data) }}
+      suppressContentEditableWarning={true}
+      onInput={onChange}
+      contentEditable={true}
+      id={'display-content'}
+      onBlur={onChange}
+    />
   )
 }
