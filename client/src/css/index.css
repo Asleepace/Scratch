@@ -1,0 +1,188 @@
+
+/* CUSTOM VARIABLES  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+
+:root {
+  --color-background: #282c34;
+  --color-foreground: rgba(0, 0, 0, 0.3);
+  --color-blue: dodgerblue;
+  --font-code: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  --rounding: 8px;
+}
+
+
+/* HTML ELEMENTS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+
+html, body {
+  height: 100%;
+}
+
+html, body, input, textarea {
+  margin: 0; padding: 0;
+}
+
+textarea {
+  outline: none;
+  background-color: transparent;
+  font-family: var(--font-code);
+  color: #EEE;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+input {
+  background-color: var(--color-foreground);
+  border-radius: var(--rounding);
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: white;
+  padding: 16px;
+  width: 100%;
+}
+
+
+/* COMMON STYLES  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+
+ #root, .container, .content, .center {
+  flex-direction: column;
+  display: flex;
+  flex-grow: 1;
+}
+
+.container {
+  /* font-size: calc(10px + 2vmin); */
+  flex-flow: column;
+  color: white;
+  display: flex;
+  flex-grow: 1;
+}
+
+.header {
+  background-color: var(--color-foreground);
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 64px;
+  padding-left: 64px;
+  min-height: 80px;
+  display: flex;
+}
+
+.content {
+  padding-right: 64px;
+  padding-left: 64px;
+  padding-top: 32px;
+  padding-bottom: 16px;
+  flex-grow: 1;
+}
+
+.center {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  font-weight: bold;
+  font-size: large;
+  margin-left: 16px;
+}
+
+
+/* CSS SHADOWS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+
+.shadow-text-heavy {
+  text-shadow: 
+    0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.shadow-box-smooth, .login-content, .header, .login-button {
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.12), 
+    0 2px 2px rgba(0,0,0,0.12), 
+    0 4px 4px rgba(0,0,0,0.12), 
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+}
+
+
+/* LOGIN STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+.spacer {
+  height: 8px;
+}
+
+.login-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex: 1
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  border-radius: var(--rounding);
+  flex-flow: column;
+  min-height: 200px;
+  min-width: 400px;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  flex-grow: 1;
+  width:  80%;
+}
+
+.login-input {
+  border: none;
+  outline: none;
+  border-radius: var(--rounding);
+  color: white;
+  height: 60px;
+  width: 80%;
+  flex: 1
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-blue);
+  font-weight: bold;
+  color: white;
+}
