@@ -17,32 +17,24 @@ export const Content: React.FC<{}> = () => {
     setText(currentText)
   }
   console.log('[Content] render:', { text, edit })
-  const props = { text, setEdit, onChange }
-  return edit ? <EditableContent {...props} /> : <DisplayedContent {...props} />
+  return (
+    <div className={"content"}>
+      <div
+        suppressContentEditableWarning={true}
+        onBlur={() => setEdit(false)}
+        onInput={onChange}
+        contentEditable={true}
+        className={'display-content'}
+        defaultValue={text}
+        hidden={!edit}
+      />
+      <div
+        dangerouslySetInnerHTML={{ __html: markdown.toHTML(text) }}
+        suppressContentEditableWarning={true}
+        onClick={() => setEdit(true)}
+        className={'display-content'}
+        hidden={edit}
+      />
+    </div>
+  )
 }
-
-interface EditableProps {
-  onChange?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined,
-  setEdit: (edit: boolean) => void,
-  text: string
-}
-
-const EditableContent: React.FC<EditableProps> = ({ text, onChange, setEdit }) => (
-  <div
-    suppressContentEditableWarning={true}
-    onBlur={() => setEdit(false)}
-    onChange={onChange}
-    contentEditable={true}
-    defaultValue={text}
-    id={'display-content'}
-  />
-)
-
-const DisplayedContent: React.FC<EditableProps> = ({ text, setEdit }) => (
-  <div
-    dangerouslySetInnerHTML={{ __html: markdown.toHTML(text) }}
-    suppressContentEditableWarning={true}
-    onClick={() => setEdit(true)}
-    id={'display-content'}
-  />
-)

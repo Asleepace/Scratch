@@ -23,7 +23,7 @@ html, body, input, textarea {
   margin: 0; padding: 0;
 }
 
-textarea, #display-content {
+textarea, .display-content {
   outline: none;
   background-color: transparent;
   font-family: var(--font-code);
