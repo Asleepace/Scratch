@@ -3,6 +3,8 @@ import { View, Input } from '../components'
 import * as Auth from '../api/robinhood'
 import CircularIntegration from '../components/buttons'
 
+import { request } from '../api/express'
+
 enum Status { LOGIN = 'login', MFA = 'mfa', LOADING = 'loading', SUCCESS = 'success' }
 
 interface State {
@@ -18,6 +20,10 @@ export class LoginView extends React.Component<{}, State> {
     this.state = {
       status: Status.LOGIN,
     }
+  }
+
+  componentDidMount = () => {
+
   }
 
   onClick = async () => {
