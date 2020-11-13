@@ -19,7 +19,7 @@ export const Content: React.FC<{}> = () => {
         onBlur={() => setEdit(false)}
         onInput={onChange}
         contentEditable={true}
-        className={'display-content'}
+        className={'editable-content'}
         defaultValue={text}
         hidden={!edit}
       />
@@ -27,7 +27,7 @@ export const Content: React.FC<{}> = () => {
         dangerouslySetInnerHTML={{ __html: markdown.toHTML(text) }}
         suppressContentEditableWarning={true}
         onClick={() => setEdit(true)}
-        className={'display-content'}
+        className={'markdown-content'}
         hidden={edit}
       />
     </div>
