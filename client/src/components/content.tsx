@@ -13,7 +13,7 @@ export const Content: React.FC<{}> = () => {
     setText(e.currentTarget.innerText)
   }
   return (
-    <div className={"content"}>
+    <div className={"editable-content-container"}>
       <div
         suppressContentEditableWarning={true}
         onBlur={() => setEdit(false)}
