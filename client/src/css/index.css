@@ -224,23 +224,33 @@ input {
   color: white;
   display: flex;
   flex-grow: 1;
+  position: relative;
 }
 
+
+
 .editable-content, .markdown-content {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
   outline: none;
   background-color: transparent;
   font-family: var(--font-code);
   color: #EEE;
   border: none;
-  width: 100%;
-  height: 100%;
   font-size: 18px;
 }
 
-.editable-content-container > p, h1, h2, h3 {
+.editable-content {
+  z-index: 10000;
+  opacity: 0;
+}
+
+.editable-content, .markdown-content > p, h1, h2, h3 {
+  line-height: 18px !important;
   margin: 0;
   padding: 0;
 }
-.editable-content-container > h1, h2, h3 {
-  margin-top: 16px;
+
+.editable-content, .markdown-content > h1, h2, h3 {
+  margin-bottom: var(--rounding);
 }

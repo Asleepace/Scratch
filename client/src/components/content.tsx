@@ -21,14 +21,12 @@ export const Content: React.FC<{}> = () => {
         contentEditable={true}
         className={'editable-content'}
         defaultValue={text}
-        hidden={!edit}
       />
       <div
         dangerouslySetInnerHTML={{ __html: markdown.toHTML(text) }}
         suppressContentEditableWarning={true}
         onClick={() => setEdit(true)}
         className={'markdown-content'}
-        hidden={edit}
       />
     </div>
   )
