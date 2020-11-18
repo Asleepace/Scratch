@@ -1,9 +1,13 @@
 import React from 'react'
+import { updateStock, deleteStock } from 'redux/actions'
 import { View, Input, Text } from 'components'
 import { Stock } from '../interfaces'
+import { connect } from 'react-redux'
 
 export interface CellProps {
-  stock: Stock
+  stock: Stock,
+  updateStock: typeof updateStock,
+  deleteStock: typeof deleteStock,
 }
 
 export interface CellState {
@@ -14,7 +18,7 @@ export interface CellState {
   diffPrice?: number,
 }
 
-export class Cell extends React.Component<CellProps, CellState> {
+class Cell extends React.Component<CellProps, CellState> {
 
   constructor(props: CellProps) {
     super(props)
@@ -43,8 +47,19 @@ export class Cell extends React.Component<CellProps, CellState> {
     const { boughtPrice, soldPrice } = this.state
     if (boughtPrice && soldPrice) {
       const diffPrice = +(Math.abs(soldPrice - boughtPrice)).toFixed(2)
-      this.setState({ diffPrice })
+      this.setState({ diffPrice }, this.update)
     }
+  }
+
+  update = () => {
+    const { tickerName, boughtPrice, soldPrice, diffPrice } = this.state
+    this.props.updateStock({
+      name: tickerName,
+      paid: boughtPrice,
+      sold: soldPrice,
+      diff: diffPrice,
+      id: this.props.stock.id
+    })
   }
 
   onBlur = () => {
@@ -77,3 +92,5 @@ export class Cell extends React.Component<CellProps, CellState> {
     )
   }
 }
+
+export default connect(null, { updateStock, deleteStock })(Cell)

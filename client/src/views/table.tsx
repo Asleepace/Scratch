@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'components'
-import { Cell } from '../components/cell'
+import Cell from '../components/cell'
 import { createStock, updateStock, deleteStock } from 'redux/actions'
 import { RootState, Stock } from 'interfaces'
 import { connect } from 'react-redux'
@@ -15,8 +15,6 @@ export interface TableProps {
     stocks: Stock[]
   },
   createStock: typeof createStock,
-  updateStock: typeof updateStock,
-  deleteStock: typeof deleteStock,
 }
 
 export interface TableState {
@@ -41,12 +39,21 @@ class Table extends React.Component<TableProps, TableState> {
     this.props.createStock()
   }
 
+  getSum = () => {
+    let sum = 0
+    for (let stock of this.props.store.stocks) {
+      console.log({ stock })
+      sum += stock.diff || 0
+    }
+    return "" + sum
+  }
+
   render() {
     return (
       <View className='table-container'>
         <View className={'table-header'}>
-          <Button text={"create"} onClick={this.createStock}><CreateIcon /></Button>
-          <Button text={"create"} color={"color-red"}><CreateIcon /></Button>
+          <Button text={"CREATE"} onClick={this.createStock} />
+          <Button text={this.getSum()} color={'color-blue'} />
 
         </View>
         { this.renderCells()}
@@ -61,6 +68,6 @@ const mapStateToProps = (store: RootState) => {
   return { store: store.stocks }
 }
 
-const mapDispatchToProps = { createStock, updateStock, deleteStock }
+const mapDispatchToProps = { createStock }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table)
