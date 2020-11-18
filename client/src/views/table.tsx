@@ -2,6 +2,7 @@ import React from 'react'
 import { View } from 'components'
 import { Cell, CellProps } from '../components/cell'
 
+
 export interface TableProps {
 
 }
