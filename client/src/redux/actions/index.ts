@@ -8,7 +8,7 @@ export const UPDATE_STOCK = 'UPDATE_STOCK'
 
 interface CreateStockAction {
   type: typeof CREATE_STOCK,
-  payload: Stock
+  payload: { id: number }
 }
 
 interface UpdateStockAction {
@@ -27,8 +27,8 @@ export type StockActionTypes = CreateStockAction | UpdateStockAction | DeleteSto
 let currentStockId = 0
 
 // exported redux actions with types
-export const createStock = (payload: Stock): CreateStockAction => ({
-  type: CREATE_STOCK, payload: { ...payload, id: currentStockId++ }
+export const createStock = (): CreateStockAction => ({
+  type: CREATE_STOCK, payload: { id: currentStockId++ }
 })
 
 export const updateStock = (payload: Stock): UpdateStockAction => ({

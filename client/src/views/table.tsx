@@ -1,13 +1,16 @@
 import React from 'react'
 import { View } from 'components'
-import { Cell, CellProps } from '../components/cell'
+import { Cell } from '../components/cell'
 import { createStock, updateStock, deleteStock } from 'redux/actions'
-import { RootState } from 'interfaces'
+import { RootState, Stock } from 'interfaces'
 import { connect } from 'react-redux'
 
 
 export interface TableProps {
-  stocks: CellProps[]
+  store: RootState,
+  createStock: typeof createStock,
+  updateStock: typeof updateStock,
+  deleteStock: typeof deleteStock,
 }
 
 export interface TableState {
@@ -18,13 +21,18 @@ class Table extends React.Component<TableProps, TableState> {
 
   constructor(props: TableProps) {
     super(props)
+    console.log('[Table] construnctor:', { props })
     this.state = {
       data: []
     }
   }
 
   renderCells = () => {
-    return this.props.stocks.map((stock, idx) => <Cell {...stock} key={idx} />)
+    return null
+  }
+
+  createStock = () => {
+    this.props.createStock()
   }
 
   render() {
@@ -36,15 +44,12 @@ class Table extends React.Component<TableProps, TableState> {
   }
 }
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    stocks: state.stocks
-  }
+// mapping the global app store to this component
+
+const mapStateToProps = (store: RootState) => {
+  return { store }
 }
 
 const mapDispatchToProps = { createStock, updateStock, deleteStock }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter)
+export default connect(mapStateToProps, mapDispatchToProps)(Table)
