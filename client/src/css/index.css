@@ -9,6 +9,7 @@
   --color-red: rgb(207, 33, 33);
   --font-code: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   --rounding: 8px;
+  --margin: 8px;
 }
 
 
@@ -253,4 +254,30 @@ input {
 
 .editable-content, .markdown-content > h1, h2, h3 {
   margin-bottom: var(--rounding);
+}
+
+
+/* Cell STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+.cell-container {
+  background-color: var(--color-foreground);
+  justify-content: space-between;
+  border-radius: var(--rounding);
+  align-items: center;
+  padding: 16px;
+  padding-left: var(--margin);
+  padding-right: var(--margin);
+  display: flex;
+  width: 100%;
+}
+
+.cell-container input {
+  background-attachment: var(--color-background);
+  padding: 16px;
+  flex-grow: 1;
+  margin-left: var(--margin);
+  margin-right: var(--margin);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
