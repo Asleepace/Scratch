@@ -20,7 +20,7 @@ export class Table extends React.Component<TableProps, TableState> {
   }
 
   renderCells = () => {
-    return this.state.data.map((data) => <Cell {...data} />)
+    return this.state.data.map((data, idx) => <Cell {...data} key={idx} />)
   }
 
   render() {

@@ -6,6 +6,7 @@
   --color-background: #282c34;
   --color-foreground: rgba(0, 0, 0, 0.3);
   --color-blue: dodgerblue;
+  --color-green: #46c75b;
   --color-red: rgb(207, 33, 33);
   --font-code: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   --rounding: 8px;
@@ -118,6 +119,10 @@ input {
 
 .red-text { 
   color: var(--color-red)
+}
+
+.green-text {
+  color: var(--color-green)
 }
 
 /* CSS SHADOWS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
