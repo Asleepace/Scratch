@@ -46,7 +46,7 @@ class Cell extends React.Component<CellProps, CellState> {
   getDifference = () => {
     const { boughtPrice, soldPrice } = this.state
     if (boughtPrice && soldPrice) {
-      const diffPrice = +(Math.abs(soldPrice - boughtPrice)).toFixed(2)
+      const diffPrice = +(soldPrice - boughtPrice).toFixed(2)
       this.setState({ diffPrice }, this.update)
     }
   }
@@ -73,7 +73,7 @@ class Cell extends React.Component<CellProps, CellState> {
   format = (data?: number, prepend: string = ""): string | undefined => {
     const value = this.value(data)
     if (value) {
-      return `${prepend}$${value.toFixed(2)}`
+      return `${prepend}$${Math.abs(value).toFixed(2)}`
     }
     return undefined
   }
