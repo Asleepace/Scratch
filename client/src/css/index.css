@@ -125,6 +125,8 @@ input {
   color: var(--color-green)
 }
 
+
+
 /* CSS SHADOWS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
 
 
@@ -282,12 +284,20 @@ input {
   width: 100%;
 }
 
-.cell-container input {
+.cell-field, .cell-container input {
   background-attachment: var(--color-background);
   padding: 16px;
   flex-grow: 1;
   margin-left: var(--margin);
   margin-right: var(--margin);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cell-buttons {
+  background-attachment: var(--color-blue);
+  flex-grow: 1;
   text-align: center;
   font-size: 18px;
   font-weight: bold;

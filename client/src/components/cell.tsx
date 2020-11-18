@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Input } from 'components'
+import { View, Input, Text } from 'components'
+import CircularIntegration from '../components/buttons'
 
 interface RawValues {
 
@@ -11,10 +12,10 @@ export interface CellProps {
 
 export interface CellState {
   isEditing: boolean,
-  tickerName: string,
-  boughtPrice: string,
-  soldPrice: string,
-  diffPrice: string,
+  tickerName?: string,
+  boughtPrice?: number,
+  soldPrice?: number,
+  diffPrice?: number,
 }
 
 export class Cell extends React.Component<CellProps, CellState> {
@@ -23,11 +24,11 @@ export class Cell extends React.Component<CellProps, CellState> {
     super(props)
     this.state = {
       isEditing: false,
-      tickerName: "",
-      boughtPrice: "",
-      soldPrice: "",
-      diffPrice: ""
     }
+  }
+
+  numeric = (text: string): number => {
+    return parseFloat(text.trim().replace("$", ""))
   }
 
   onChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,39 +36,52 @@ export class Cell extends React.Component<CellProps, CellState> {
   }
 
   onChangeBuys = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ boughtPrice: event.target.value, isEditing: true })
+    this.setState({ boughtPrice: this.numeric(event.target.value), isEditing: true })
   }
 
   onChnageSell = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ soldPrice: event.target.value, isEditing: true })
+    this.setState({ soldPrice: this.numeric(event.target.value), isEditing: true }, this.getDifference)
   }
 
-  getDifference = (): string => {
+  getDifference = () => {
     const { boughtPrice, soldPrice } = this.state
-
-    const bought = parseFloat(boughtPrice.trim().replace("$", ""))
-    const sold = parseFloat(soldPrice.trim().replace("$", ""))
-    const diff = (bought - sold).toFixed(2)
-
-    return `$${diff}`
+    if (boughtPrice && soldPrice) {
+      const diffPrice = +(Math.abs(soldPrice - boughtPrice)).toFixed(2)
+      this.setState({ diffPrice })
+    }
   }
 
   onBlur = () => {
     this.setState({ isEditing: false })
   }
 
-  format = (value: string) => {
-    if (this.state.isEditing || !value) return ''
-    return this.state.isEditing && value ? '' : `$${parseFloat(value.replace("$", "")).toFixed(2)}`
+  value = (value: any) => {
+    return (this.state.isEditing || !value) ? undefined : value
+  }
+
+  format = (data?: number, prepend: string = ""): string | undefined => {
+    const value = this.value(data)
+    if (value) {
+      return `${prepend}$${value.toFixed(2)}`
+    }
+    return undefined
   }
 
   render() {
+    const { tickerName, boughtPrice, soldPrice, diffPrice } = this.state
+    const color = diffPrice && diffPrice < 0 ? 'red-text' : 'green-text'
+    const signs = diffPrice && diffPrice < 0 ? '- ' : '+ '
     return (
       <View className={'cell-container'}>
-        <Input onChange={this.onChangeName} onBlur={this.onBlur} />
-        <Input onChange={this.onChangeBuys} onBlur={this.onBlur} className={'red-text'} />
-        <Input onChange={this.onChnageSell} onBlur={this.onBlur} className={'green-text'} />
-        <Input value={this.getDifference()} />
+        <Input value={this.value(tickerName?.toUpperCase())} onChange={this.onChangeName} onBlur={this.onBlur} />
+        <Input value={this.format(boughtPrice)} onChange={this.onChangeBuys} onBlur={this.onBlur} className={'blue-text'} />
+        <Input value={this.format(soldPrice)} onChange={this.onChnageSell} onBlur={this.onBlur} className={'green-text'} />
+        <Input value={this.format(diffPrice, signs)} className={color} />
+        <View className={'cell-buttons'}>
+          <View className={'cell-buttons'}>SAVE</View>
+          <View className={'cell-buttons'}>DELETE</View>
+
+        </View>
       </View>
     )
   }
