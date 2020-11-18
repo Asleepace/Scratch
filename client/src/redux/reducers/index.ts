@@ -5,4 +5,3 @@ export const rootReducer = combineReducers({
   stocks: stockReducer
 })
 
-export type RootState = ReturnType<typeof rootReducer>

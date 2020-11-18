@@ -1,4 +1,5 @@
 import React from 'react'
+import { rootReducer } from '../redux/reducers'
 
 /** Interfaces
  * 
@@ -23,3 +24,5 @@ export interface Stock {
   diff?: number,
   id: number,
 }
+
+export type RootState = ReturnType<typeof rootReducer>

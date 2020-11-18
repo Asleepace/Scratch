@@ -1,13 +1,9 @@
 import React from 'react'
 import { View, Input, Text } from 'components'
-import CircularIntegration from '../components/buttons'
-
-interface RawValues {
-
-}
+import { Stock } from '../interfaces'
 
 export interface CellProps {
-
+  stock: Stock
 }
 
 export interface CellState {
