@@ -6,9 +6,11 @@
   --color-background: #282c34;
   --color-foreground: rgba(0, 0, 0, 0.3);
   --color-blue: dodgerblue;
+  --color-green: #46c75b;
   --color-red: rgb(207, 33, 33);
   --font-code: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   --rounding: 8px;
+  --margin: 8px;
 }
 
 
@@ -23,7 +25,7 @@ html, body, input, textarea {
   margin: 0; padding: 0;
 }
 
-textarea, #display-content {
+textarea {
   outline: none;
   background-color: transparent;
   font-family: var(--font-code);
@@ -118,6 +120,12 @@ input {
 .red-text { 
   color: var(--color-red)
 }
+
+.green-text {
+  color: var(--color-green)
+}
+
+
 
 /* CSS SHADOWS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
 
@@ -216,4 +224,81 @@ input {
   background-color: var(--color-blue);
   font-weight: bold;
   color: white;
+}
+
+
+.editable-content-container {
+  flex-flow: column;
+  color: white;
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+}
+
+
+
+.editable-content, .markdown-content {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  outline: none;
+  background-color: transparent;
+  font-family: var(--font-code);
+  color: #EEE;
+  border: none;
+  font-size: 18px;
+}
+
+.editable-content {
+  z-index: 10000;
+  opacity: 0;
+}
+
+.editable-content, .markdown-content > p, h1, h2, h3 {
+  line-height: 18px !important;
+  margin: 0;
+  padding: 0;
+}
+
+.editable-content, .markdown-content > h1, h2, h3 {
+  margin-bottom: var(--rounding);
+}
+
+
+/* Cell STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+} 
+
+.cell-container {
+  background-color: var(--color-foreground);
+  justify-content: space-between;
+  border-radius: var(--rounding);
+  align-items: center;
+  padding: 16px;
+  padding-left: var(--margin);
+  padding-right: var(--margin);
+  margin-bottom: var(--margin);
+  display: flex;
+  width: 100%;
+}
+
+.cell-field, .cell-container input {
+  background-attachment: var(--color-background);
+  padding: 16px;
+  flex-grow: 1;
+  margin-left: var(--margin);
+  margin-right: var(--margin);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cell-buttons {
+  background-attachment: var(--color-blue);
+  flex-grow: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
