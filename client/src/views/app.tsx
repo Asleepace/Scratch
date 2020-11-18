@@ -2,13 +2,13 @@ import React from 'react'
 import { Container } from '../components'
 import { Content } from '../components/content'
 import { TextArea } from '../components/textarea'
-import { Cell } from '../components/cell'
+import { Table } from './table'
 
 
 export const App = () => {
   return (
     <Container>
-      <Cell />
+      <Table />
     </Container>
   )
 }

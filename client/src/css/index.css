@@ -259,6 +259,11 @@ input {
 
 /* Cell STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
 
+.table-container {
+  display: flex;
+  flex-direction: column;
+} 
+
 .cell-container {
   background-color: var(--color-foreground);
   justify-content: space-between;
@@ -267,6 +272,7 @@ input {
   padding: 16px;
   padding-left: var(--margin);
   padding-right: var(--margin);
+  margin-bottom: var(--margin);
   display: flex;
   width: 100%;
 }
