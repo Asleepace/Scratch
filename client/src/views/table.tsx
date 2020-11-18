@@ -4,6 +4,7 @@ import { Cell } from '../components/cell'
 import { createStock, updateStock, deleteStock } from 'redux/actions'
 import { RootState, Stock } from 'interfaces'
 import { connect } from 'react-redux'
+import { Button } from '../components/buttons'
 
 import CreateIcon from '@material-ui/icons/Receipt';
 
@@ -44,7 +45,10 @@ class Table extends React.Component<TableProps, TableState> {
     return (
       <View className='table-container'>
         <View className={'table-header'}>
-          <View onClick={this.createStock}><CreateIcon /></View>
+          <Button text={"create"} onClick={this.createStock}><CreateIcon /></Button>
+          <Button text={"create"}><CreateIcon /></Button>
+          <Button text={"create"}><CreateIcon /></Button>
+
         </View>
         { this.renderCells()}
       </View>
