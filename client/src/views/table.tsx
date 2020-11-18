@@ -45,7 +45,7 @@ class Table extends React.Component<TableProps, TableState> {
       console.log({ stock })
       sum += stock.diff || 0
     }
-    return "" + sum
+    return sum
   }
 
   render() {
@@ -53,7 +53,7 @@ class Table extends React.Component<TableProps, TableState> {
       <View className='table-container'>
         <View className={'table-header'}>
           <Button text={"CREATE"} onClick={this.createStock} />
-          <Button text={this.getSum()} color={'color-blue'} />
+          <Button text={`$${this.getSum().toFixed(2)}`} color={'color-blue'} />
 
         </View>
         { this.renderCells()}
