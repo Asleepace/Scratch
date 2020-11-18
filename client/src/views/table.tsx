@@ -5,9 +5,14 @@ import { createStock, updateStock, deleteStock } from 'redux/actions'
 import { RootState, Stock } from 'interfaces'
 import { connect } from 'react-redux'
 
+import CreateIcon from '@material-ui/icons/Receipt';
+
+
 
 export interface TableProps {
-  store: RootState,
+  store: {
+    stocks: Stock[]
+  },
   createStock: typeof createStock,
   updateStock: typeof updateStock,
   deleteStock: typeof deleteStock,
@@ -28,7 +33,7 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   renderCells = () => {
-    return null
+    return this.props.store?.stocks?.map?.(stock => <Cell stock={stock} key={stock.id} />) || undefined
   }
 
   createStock = () => {
@@ -38,6 +43,9 @@ class Table extends React.Component<TableProps, TableState> {
   render() {
     return (
       <View className='table-container'>
+        <View className={'table-header'}>
+          <View onClick={this.createStock}><CreateIcon /></View>
+        </View>
         { this.renderCells()}
       </View>
     )
@@ -47,7 +55,7 @@ class Table extends React.Component<TableProps, TableState> {
 // mapping the global app store to this component
 
 const mapStateToProps = (store: RootState) => {
-  return { store }
+  return { store: store.stocks }
 }
 
 const mapDispatchToProps = { createStock, updateStock, deleteStock }

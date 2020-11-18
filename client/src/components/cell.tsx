@@ -73,11 +73,6 @@ export class Cell extends React.Component<CellProps, CellState> {
         <Input value={this.format(boughtPrice)} onChange={this.onChangeBuys} onBlur={this.onBlur} className={'blue-text'} />
         <Input value={this.format(soldPrice)} onChange={this.onChnageSell} onBlur={this.onBlur} className={'green-text'} />
         <Input value={this.format(diffPrice, signs)} className={color} />
-        <View className={'cell-buttons'}>
-          <View className={'cell-buttons'}>SAVE</View>
-          <View className={'cell-buttons'}>DELETE</View>
-
-        </View>
       </View>
     )
   }

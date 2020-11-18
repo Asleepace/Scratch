@@ -12,11 +12,12 @@ const initialState: State = {
 
 export function stockReducer(state = initialState, action: StockActionTypes) {
   const { payload } = action
+  console.log('[RootReducer] called:', { state, action })
   switch (action.type) {
     case CREATE_STOCK: {
       return {
         ...state,
-        stocks: state.stocks.push(payload)
+        stocks: [...state.stocks, payload]
       }
     }
     case UPDATE_STOCK: {
