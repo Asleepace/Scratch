@@ -15,7 +15,7 @@ export const Header: React.FC<{}> = () => {
 
   return (
     <header className={"header"}>
-      <p className={"header-title"}>Phoenix</p>
+      <p className={"header-title"}>Robinhood</p>
       <div className={"v-line"} />
       <p className={styles}>{status}</p>
     </header>
