@@ -84,10 +84,10 @@ class Cell extends React.Component<CellProps, CellState> {
     const signs = diffPrice && diffPrice < 0 ? '- ' : '+ '
     return (
       <View className={'cell-container'}>
-        <Input value={this.value(tickerName?.toUpperCase())} onChange={this.onChangeName} onBlur={this.onBlur} />
-        <Input value={this.format(boughtPrice)} onChange={this.onChangeBuys} onBlur={this.onBlur} className={'blue-text'} />
-        <Input value={this.format(soldPrice)} onChange={this.onChnageSell} onBlur={this.onBlur} className={'green-text'} />
-        <Input value={this.format(diffPrice, signs)} className={color} />
+        <Input placeholder={"NAME"} value={this.value(tickerName?.toUpperCase())} onChange={this.onChangeName} onBlur={this.onBlur} />
+        <Input placeholder={"PAID"} value={this.format(boughtPrice)} onChange={this.onChangeBuys} onBlur={this.onBlur} className={'blue-text'} />
+        <Input placeholder={"SOLD"} value={this.format(soldPrice)} onChange={this.onChnageSell} onBlur={this.onBlur} className={'green-text'} />
+        <Input placeholder={"GAIN"} value={this.format(diffPrice, signs)} className={color} />
       </View>
     )
   }

@@ -54,10 +54,9 @@ class Table extends React.Component<TableProps, TableState> {
         <View className={'table-header'}>
           <Button text={"CREATE"} onClick={this.createStock} />
           <Button text={`$${this.getSum().toFixed(2)}`} color={'color-blue'} />
-
         </View>
         { this.renderCells()}
-      </View>
+      </View >
     )
   }
 }
