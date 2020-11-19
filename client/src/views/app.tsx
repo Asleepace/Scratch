@@ -1,14 +1,12 @@
 import React from 'react'
 import { Container } from '../components'
-import { Content } from '../components/content'
-import { TextArea } from '../components/textarea'
-import { Table } from './table'
+import TableView from './table'
 
 
 export const App = () => {
   return (
     <Container>
-      <Table />
+      <TableView />
     </Container>
   )
 }

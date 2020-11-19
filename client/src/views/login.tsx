@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Input } from '../components'
 import * as Auth from '../api/robinhood'
-import CircularIntegration from '../components/buttons'
+import CircularIntegration from '../components/buttons_old'
 
 
 enum Status { LOGIN = 'login', MFA = 'mfa', LOADING = 'loading', SUCCESS = 'success' }

@@ -48,6 +48,10 @@ body {
   flex-direction: column;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
@@ -125,6 +129,13 @@ input {
   color: var(--color-green)
 }
 
+.color-red {
+  background-color: var(--color-red) !important;
+}
+
+.color-blue {
+  background-color: var(--color-blue) !important;
+}
 
 
 /* CSS SHADOWS  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
@@ -263,13 +274,36 @@ input {
   margin-bottom: var(--rounding);
 }
 
+/* BUTTON STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
+
+.button-container {
+  background-color: #46c75b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px;
+  flex-grow: 1;
+}
 
 /* Cell STYLES -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   */
 
 .table-container {
   display: flex;
   flex-direction: column;
+  border-radius: var(--rounding);
+  overflow: hidden;
+  padding: 16px;
 } 
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  border-radius: var(--rounding);
+  overflow: hidden;
+}
 
 .cell-container {
   background-color: var(--color-foreground);
@@ -281,7 +315,6 @@ input {
   padding-right: var(--margin);
   margin-bottom: 16px;
   display: flex;
-  width: 100%;
 }
 
 .cell-field, .cell-container input {

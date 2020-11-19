@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import reportWebVitals from './utils/reportWebVitals'
+import { Provider } from 'react-redux'
 import { App } from './views/app'
+import { store } from './redux/store'
 
 // Set default body styles
 import './css/index.css'
@@ -9,7 +11,9 @@ import 'fontsource-roboto';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

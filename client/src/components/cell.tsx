@@ -1,13 +1,13 @@
 import React from 'react'
+import { updateStock, deleteStock } from 'redux/actions'
 import { View, Input, Text } from 'components'
-import CircularIntegration from '../components/buttons'
-
-interface RawValues {
-
-}
+import { Stock } from '../interfaces'
+import { connect } from 'react-redux'
 
 export interface CellProps {
-
+  stock: Stock,
+  updateStock: typeof updateStock,
+  deleteStock: typeof deleteStock,
 }
 
 export interface CellState {
@@ -18,7 +18,7 @@ export interface CellState {
   diffPrice?: number,
 }
 
-export class Cell extends React.Component<CellProps, CellState> {
+class Cell extends React.Component<CellProps, CellState> {
 
   constructor(props: CellProps) {
     super(props)
@@ -46,9 +46,20 @@ export class Cell extends React.Component<CellProps, CellState> {
   getDifference = () => {
     const { boughtPrice, soldPrice } = this.state
     if (boughtPrice && soldPrice) {
-      const diffPrice = +(Math.abs(soldPrice - boughtPrice)).toFixed(2)
-      this.setState({ diffPrice })
+      const diffPrice = +(soldPrice - boughtPrice).toFixed(2)
+      this.setState({ diffPrice }, this.update)
     }
+  }
+
+  update = () => {
+    const { tickerName, boughtPrice, soldPrice, diffPrice } = this.state
+    this.props.updateStock({
+      name: tickerName,
+      paid: boughtPrice,
+      sold: soldPrice,
+      diff: diffPrice,
+      id: this.props.stock.id
+    })
   }
 
   onBlur = () => {
@@ -62,7 +73,7 @@ export class Cell extends React.Component<CellProps, CellState> {
   format = (data?: number, prepend: string = ""): string | undefined => {
     const value = this.value(data)
     if (value) {
-      return `${prepend}$${value.toFixed(2)}`
+      return `${prepend}$${Math.abs(value).toFixed(2)}`
     }
     return undefined
   }
@@ -77,12 +88,9 @@ export class Cell extends React.Component<CellProps, CellState> {
         <Input value={this.format(boughtPrice)} onChange={this.onChangeBuys} onBlur={this.onBlur} className={'blue-text'} />
         <Input value={this.format(soldPrice)} onChange={this.onChnageSell} onBlur={this.onBlur} className={'green-text'} />
         <Input value={this.format(diffPrice, signs)} className={color} />
-        <View className={'cell-buttons'}>
-          <View className={'cell-buttons'}>SAVE</View>
-          <View className={'cell-buttons'}>DELETE</View>
-
-        </View>
       </View>
     )
   }
 }
+
+export default connect(null, { updateStock, deleteStock })(Cell)

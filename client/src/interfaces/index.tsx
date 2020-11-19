@@ -1,4 +1,5 @@
 import React from 'react'
+import { rootReducer } from '../redux/reducers'
 
 /** Interfaces
  * 
@@ -15,3 +16,13 @@ export type TextProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagra
 export type InputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 export type TextAreaProps = React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
+
+export interface Stock {
+  name?: string,
+  paid?: number,
+  sold?: number,
+  diff?: number,
+  id: number,
+}
+
+export type RootState = ReturnType<typeof rootReducer>
