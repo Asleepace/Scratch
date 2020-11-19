@@ -49,11 +49,16 @@ class Table extends React.Component<TableProps, TableState> {
   }
 
   render() {
+    const sum = this.getSum()
+    const negative = sum < 0
+    const total = negative ? `- $${Math.abs(sum)}` : `${sum}`
+    const color = negative ? 'color-red' : 'color-green'
+
     return (
       <View className='table-container'>
         <View className={'table-header'}>
-          <Button text={"CREATE"} onClick={this.createStock} />
-          <Button text={`$${this.getSum().toFixed(2)}`} color={'color-blue'} />
+          <Button text={"CREATE"} onClick={this.createStock} color={"color-blue"} />
+          <Button text={total} color={color} />
         </View>
         { this.renderCells()}
       </View >
