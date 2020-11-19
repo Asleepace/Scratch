@@ -57,8 +57,10 @@ class Table extends React.Component<TableProps, TableState> {
     return (
       <View className='table-container'>
         <View className={'table-header'}>
-          <Button text={"CREATE"} onClick={this.createStock} color={"color-blue"} />
-          <Button text={total} color={color} />
+          <View className={'table-content'}>
+            <Button text={"CREATE"} onClick={this.createStock} color={"color-blue"} />
+            <Button text={total} color={color} />
+          </View>
         </View>
         { this.renderCells()}
       </View >

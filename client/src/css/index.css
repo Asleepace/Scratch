@@ -148,7 +148,7 @@ input {
     0px 18px 23px rgba(0,0,0,0.1);
 }
 
-.shadow-box-smooth, .login-content, .header, .login-button, .cell-container {
+.shadow-box-smooth, .login-content, .header, .login-button, .cell-container, .table-header {
   box-shadow: 
     0 1px 1px rgba(0,0,0,0.12), 
     0 2px 2px rgba(0,0,0,0.12), 
@@ -298,11 +298,21 @@ input {
 } 
 
 .table-header {
-  display: flex;
+  background-color: var(--color-foreground);
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 32px;
   border-radius: var(--rounding);
+  display: flex;
+  padding: 16px;
+}
+
+.table-content {
+  display: flex;
+  justify-content: space-between;
+  border-radius: var(--rounding);
   overflow: hidden;
+  flex-grow: 1;
 }
 
 .cell-container {
