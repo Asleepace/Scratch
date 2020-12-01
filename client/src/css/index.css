@@ -301,7 +301,7 @@ input {
   background-color: var(--color-foreground);
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   border-radius: var(--rounding);
   display: flex;
   padding: 16px;

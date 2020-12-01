@@ -51,7 +51,7 @@ class Table extends React.Component<TableProps, TableState> {
   render() {
     const sum = this.getSum()
     const negative = sum < 0
-    const total = negative ? `- $${Math.abs(sum)}` : `${sum}`
+    const total = negative ? `- $${Math.abs(sum)}` : `$${sum}`
     const color = negative ? 'color-red' : 'color-green'
 
     return (
